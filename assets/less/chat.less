@@ -1,0 +1,431 @@
+@font-size: 13px;
+
+@color-primary: #206EF4;
+@color-secondary: #E6E5EB;
+@color-tertiary: #F9F9FB;
+
+@color-border: #DCDAE3;
+@color-text-muted: #9AAFB5;
+
+@color-message-me: #206EF4;
+@color-message-you: #E6E5EB;
+@color-text-message-me: white;
+@color-text-message-you: black;
+
+@size-avatar: 30px;
+
+@spacing-tab: 15px;
+
+
+@width-tab-inactive: 190px;
+@width-tab-active: 285px;
+@width-tab-user: 205px;
+@width-scroller: 30px;
+
+@height-tab-user: 400px;
+@height-tab: 320px;
+@height-tab-header: 30px;
+@height-tab-min-footer: 30px;
+@height-tab-max-footer: 100px;
+
+div#chat {
+	// Positioning the main container to the bottom-right of the document
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	
+	// No pointer events on the main container
+	pointer-events: none;
+
+	font-size: @font-size;
+	font-family: Arial, sans-serif;
+
+	ul {
+		margin: 0;
+		padding: 0;
+
+		list-style: none;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	input.form-control, textarea.form-control {
+		min-height: @height-tab-min-footer;
+		max-height: @height-tab-max-footer;
+		box-sizing: border-box;
+		width: 100%;
+		vertical-align: middle;
+
+		padding: 7px 5px;
+		border: 0;
+		outline: 0;
+		resize: none;
+		font-size: @font-size;
+		line-height: 16px; // 16px + 7px + 7px = 30px
+	}
+
+	ul.dropdown {
+		white-space: nowrap;
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		z-index: 9999;
+
+		background-color: white;
+		border: 1px solid @color-border;
+		border-radius: 5px;
+		margin-bottom: 10px;
+		padding: 10px 0;
+
+		&:after {
+			content: "\00a0";
+			display: block;
+			position: absolute;
+			top: 100%;
+			left: 9px;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 6px 6px 0 6px;
+			border-color: white transparent transparent transparent;
+		}
+
+		&:before {
+			content: "\00a0";
+			display: block;
+			position: absolute;
+			top: 100%;
+			left: 8px;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 7px 7px 0 7px;
+			border-color: @color-border transparent transparent transparent;
+		}
+
+		li {
+			padding: 5px 15px;
+			cursor: pointer;
+			margin: 0 -1px; // To overlay the border
+
+			&:hover {
+				background-color: @color-primary;
+				color: white;
+			}
+		}
+	}
+
+	div.media {
+		div.media-aside {
+			line-height: 0;
+		}
+		&.left {
+			div.media-aside {
+				float: left;
+				margin-right: 10px;
+			}
+		}
+		&.right {
+			div.media-aside {
+				float: right;
+				margin-left: 10px;
+			}
+		}
+		div.media-body:after {
+			content: " ";
+			visibility: hidden;
+			display: block;
+			height: 0;
+			clear: both;
+		}
+	}
+
+	img.avatar {
+		width: @size-avatar;
+		height: @size-avatar;
+		border-radius: 5px;
+		background-color: @color-secondary;
+	}
+
+	div.header {
+		line-height: @height-tab-header;
+		height: @height-tab-header;
+		cursor: pointer;
+
+		background-color: @color-primary;
+		border: 1px solid @color-primary;
+		color: white;
+
+		border-bottom: 0;
+		-webkit-border-top-left-radius: 5px;
+		-webkit-border-top-right-radius: 5px;
+		-moz-border-radius-topleft: 5px;
+		-moz-border-radius-topright: 5px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+
+		padding: 0 10px;
+	}
+
+	.inactive {
+		div.header {
+			background-color: @color-secondary;
+			border: 1px solid @color-border;
+			color: black;
+		}
+	}
+	div#scroller {
+		div.header {
+			text-align: center;
+			padding: 0;
+		}
+	}
+}
+
+div#scroller {
+	position: absolute;
+	bottom: 0;
+	right: 100%;
+	z-index: 9999;
+
+	width: @width-scroller;
+	margin-right: @spacing-tab;
+}
+ul#tab-list li.tab, div#scroller {
+	pointer-events: auto;
+
+	div.container {
+		// Adding table behaviour to .container
+		display: table;
+		width: 100%;
+		height: 100%;
+
+		div.row {
+			display: table-row;
+		}
+		div.row-body {
+			height: 100%;
+		}
+		div.header, div.body, div.footer {
+			display: table-cell;
+		}
+		div.body {
+			// Relative so, the content can be positioned relative to the body position
+			position: relative;
+
+			// Add scrollbar to the body when content is large
+			overflow-x: hidden;
+			overflow-y: auto;
+
+			div.content {
+				// Must be absolute otherwise the cell will expand to fit the content and the footer won't show
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				padding: 10px 0;
+				box-sizing: border-box;
+				
+				// Padding-bottom doesn't work if there is scrollbar so, we simulate padding-bottom by adding an element with certain height
+				&:after {
+					content: " ";
+					display: block;
+					height: 15px;
+				}
+			}
+		}
+	}
+	
+	&.inactive {
+		height: auto !important;
+
+		div.container {
+			height: auto !important;
+
+			div.row-header {
+				height: auto !important;
+			}
+			div.row-body, div.row-footer {
+				display: none;
+			}
+		}
+	}
+}
+ul#tab-list {
+	direction: rtl;
+	white-space: nowrap;
+
+	li.tab {
+		display: inline-block;
+		*display: inline;
+		*zoom: 1;
+
+		vertical-align: bottom;
+		white-space: normal;
+		
+		direction: ltr;
+		text-align: left;
+
+		height: @height-tab;
+		margin-right: @spacing-tab;
+
+		width: @width-tab-active;
+
+		&.inactive {
+			width: @width-tab-inactive;
+		}
+		&#user-tab {
+			width: @width-tab-user;
+		}
+		&#user-tab {
+			height: @height-tab-user;
+
+			div.container {
+				div.body {
+					background-color: white;
+				}
+			}
+		}
+
+		div.container {
+			div.body {
+				border: 1px solid @color-border;
+				border-top: 0;
+				border-bottom: 0;
+				background-color: @color-tertiary;
+
+				ul.users#user-list {
+					li.user {
+						padding: 5px 10px;
+						line-height: 30px;
+						cursor: pointer;
+
+						&:hover {
+							background-color: @color-tertiary;
+						}
+					}
+				}
+				ul.messages {
+					li.date {
+						padding: 10px 15px;
+						color: @color-text-muted;
+						text-align: center;
+					}
+
+					li.message {
+						padding: 5px 10px;
+
+						&.me {
+							div.media-body {
+								margin-right: @size-avatar + 15;
+
+								div.bubble {
+									float: right;
+									background-color: @color-message-me;
+									color: @color-text-message-me;
+
+									&:before {
+										border-width: 6px 0 6px 7px;
+										border-color: transparent transparent transparent @color-message-me;
+										left: 100%;
+										margin-left: -1px;
+									}
+								}
+							}
+						}
+
+						&.me.no-avatar {
+							div.media-body {
+								margin-right: 10px;
+								margin-left: @size-avatar;
+							}
+						}
+
+						&.you {
+							div.media-body {
+								margin-left: @size-avatar + 15;
+
+								div.bubble {
+									float: left;
+									background-color: @color-message-you;
+									color: @color-text-message-you;
+
+									&:before {
+										border-width: 6px 8px 6px 0;
+										border-color: transparent @color-message-you transparent transparent;
+										right: 100%;
+										margin-right: -1px;
+									}
+								}
+							}
+						}
+						div.bubble {
+							padding: 8px 10px;
+							position: relative;
+							line-height: 1.3;
+							border-radius: 5px;
+
+							&:before {
+								content: "\00a0";
+								display: block;
+								position: absolute;
+								top: 8px;
+								width: 0;
+								height: 0;
+								border-style: solid;
+							}
+						}
+					}
+				}
+			}
+			div.footer {
+				border: 1px solid @color-border;
+				border-bottom: 0;
+			}
+		}
+	}
+}
+
+@media all and (min-width: 1280px) {
+	div#chat.sidebar {
+		height: 100%;
+		padding-right: 0;
+
+		ul#tab-list {
+			height: 100%;
+
+			li#user-tab.tab {
+				margin-right: 0;
+				height: 100% !important;
+
+				div.container {
+					height: 100% !important;
+
+					div.row-header {
+						display: none !important;
+					}
+					
+					div.row-body, div.row-footer {
+						display: table-row !important;
+					}
+				}
+			}
+		}
+	}
+}
+// A Firefox specific fix
+@-moz-document url-prefix() {
+	ul#tab-list {
+		li.tab {
+			div.container {
+				div.body {
+					div.content {
+						overflow-x: hidden;
+						overflow-y: scroll;
+					}
+				}
+			}
+		}
+	}
+}

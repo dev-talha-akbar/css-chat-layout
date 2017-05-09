@@ -1,0 +1,182 @@
+<!-- A comment -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Chat Layout</title>
+
+	<link rel="stylesheet" href="assets/css/normalize.min.css">
+	<link rel="stylesheet" href="assets/css/chat.css">
+	<!--[if lt IE 8]>
+		<link rel="stylesheet" type="text/css" href="css/chat-ie.css">
+	<![endif]-->
+</head>
+<body>
+	<div id="chat" class="sidebar">
+		<div id="scroller" class="inactive">
+			<div class="container">
+				<div class="row row-header">
+					<div class="header">
+						<div class="content">2</div>
+					</div>
+				</div>
+				<div class="row row-body">
+					<ul class="dropdown">
+						<li>Muhammad Ali Akbar</li>
+						<li>Andras Torma</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<ul id="tab-list">
+			<li id="user-tab" class="tab">
+				<div class="container">
+					<div class="row row-header">
+						<div class="header">
+							<div class="content">Chat</div>
+						</div>
+					</div>
+					<div class="row row-body">
+						<div class="body">
+							<div class="content">
+								<ul id="user-list" class="users">
+									<li class="user">
+										<div class="media left">
+											<div class="media-aside"><img class="avatar" src="assets/img/avatar.png" alt="avatar"></div>
+											<div class="media-body">Talha Akbar</div>
+										</div>
+									</li>
+									<li class="user">
+										<div class="media left">
+											<div class="media-aside"><img class="avatar" src="assets/img/avatar.png" alt="avatar"></div>
+											<div class="media-body">Ali Akbar</div>
+										</div>
+									</li>
+									<li class="user">
+										<div class="media left">
+											<div class="media-aside"><img class="avatar" src="assets/img/avatar.png" alt="avatar"></div>
+											<div class="media-body">Andras Torma</div>
+										</div>
+									</li>
+									<li class="user">
+										<div class="media left">
+											<div class="media-aside"><img class="avatar" src="assets/img/avatar.png" alt="avatar"></div>
+											<div class="media-body">Tommy Vercetti</div>
+										</div>
+									</li>
+									<li class="user">
+										<div class="media left">
+											<div class="media-aside"><img class="avatar" src="assets/img/avatar.png" alt="avatar"></div>
+											<div class="media-body">Trevor Phillips</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="row row-footer">
+						<div class="footer">
+							<div class="content">
+								<input type="text" class="form-control" placeholder="Search">
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="tab">
+				<div class="container">
+					<div class="row row-header">
+						<div class="header">
+							<div class="content">Talha Akbar</div>
+						</div>
+					</div>
+					<div class="row row-body">
+						<div class="body">
+							<div class="content">
+								<ul class="messages">
+									<li class="date">Today at 12:58 pm</li>
+									<li class="message me no-avatar">
+										<div class="media right">
+											<div class="media-body">
+												<div class="bubble">
+													<p>Hey! Wassup?</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="message you">
+										<div class="media left">
+											<div class="media-aside"><img class="avatar" src="assets/img/avatar.png" alt="avatar"></div>
+											<div class="media-body">
+												<div class="bubble">
+													<p>I am working on the chat application.</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="message me no-avatar">
+										<div class="media right">
+											<div class="media-body">
+												<div class="bubble">
+													<p>I will be looking forward to the final result.</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="message me no-avatar">
+										<div class="media right">
+											<div class="media-body">
+												<div class="bubble">
+													<p>What's the expected time of release?</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="message you">
+										<div class="media left">
+											<div class="media-aside"><img class="avatar" src="assets/img/avatar.png" alt="avatar"></div>
+											<div class="media-body">
+												<div class="bubble">
+													<p>It is expected to be released soon.</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="message me no-avatar">
+										<div class="media right">
+											<div class="media-body">
+												<div class="bubble">
+													<p>I will definitely buy a copy.</p>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="message you">
+										<div class="media left">
+											<div class="media-aside"><img class="avatar" src="assets/img/avatar.png" alt="avatar"></div>
+											<div class="media-body">
+												<div class="bubble">
+													<p>Sure.</p>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="row row-footer">
+						<div class="footer">
+							<div class="content">
+								<textarea rows="1" class="form-control"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script src="assets/js/elastic.min.js"></script>
+	<script src="assets/js/main.js"></script>
+	</body>
+</html>
